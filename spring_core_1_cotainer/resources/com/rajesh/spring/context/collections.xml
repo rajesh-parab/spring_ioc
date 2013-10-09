@@ -9,8 +9,79 @@
     http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<bean id="foodItem1" class="com.rajesh.spring.core.collections.FoodItem" />
+	<bean id="foodItem2" class="com.rajesh.spring.core.collections.FoodItem" />
 
- <bean id="moreComplexObject" class="example.ComplexObject">
+
+	<bean id="collectionHolder" class="com.rajesh.spring.core.collections.CollectionHolder">
+
+		<!-- list -->
+		<property name="names">
+			<list>
+				<value>item1</value>
+				<value>item2</value>
+			</list>
+		</property>
+
+		<property name="foodItems">
+			<list>
+				<ref bean="foodItem1" />
+				<ref bean="foodItem2" />
+			</list>
+		</property>
+
+
+		<!-- properties -->
+		<property name="emails">
+			<props>
+				<prop key="administrator">administrator@example.org</prop>
+				<prop key="support">support@example.org</prop>
+				<prop key="development">development@example.org</prop>
+			</props>
+		</property>
+
+		<property name="stringMaps">
+			<map>
+				<entry key="one" value="i am one" />
+				<entry key="two" value="i am two" />
+			</map>
+		</property>
+
+		<property name="foodMaps">
+			<map>
+				<entry key="one" value-ref="foodItem1" />
+				<entry key="two" value-ref="foodItem2" />
+			</map>
+		</property>
+
+		<property name="mixSet">
+			<set>
+				<value>just some string</value>
+				<ref bean="foodItem1" />
+			</set>
+		</property>
+	</bean>
+
  
- </bean>
-</beans>
+		<bean id="commonnames" abstract="true"
+			class="com.rajesh.spring.core.collections.CollectionMerging">
+			<property name="names">
+				<list>
+					<value>AAA</value>
+					<value>BBB</value>
+				</list>
+			</property>
+		</bean>
+		<bean id="specialNames" parent="commonnames">
+			<property name="names">
+				<!-- the merge is specified on the *child* collection definition -->
+				<list  merge="true">
+					<value>BBB</value>
+					<value>DDD</value>
+					<value>EEE</value>
+				</list>
+			</property>
+		</bean>
+
+
+	</beans>

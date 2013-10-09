@@ -91,7 +91,7 @@ public class IOCTest extends AbstractJUnit4SpringContextTests {
 			} else {
 				fail(" should have been BeanCurrentlyInCreationException");
 			}
-
+ 
 		}
 
 	}
@@ -104,7 +104,7 @@ public class IOCTest extends AbstractJUnit4SpringContextTests {
 		assertEquals(customer.getOrderBeanName(), "order");
 		Customer customer3 = applicationContext.getBean("customer3",
 				Customer.class);
-	//	assertEquals(customer3.getOrderBeanName(), "order");
+	 	//assertEquals(customer3.getOrderBeanName(), "order");
 	}
 
 	@Test
@@ -136,5 +136,12 @@ public class IOCTest extends AbstractJUnit4SpringContextTests {
 		assertEquals("booksOfChild",customer2.getOrder().getItem());
 		
 	}
+	@Test
+	public void testCompoundPropery() {
+		Customer customer5 = applicationContext.getBean("customer5",
+				Customer.class);
+		assertEquals("pizza",customer5.getOrder().getItem());
+	}
+	
 
 }

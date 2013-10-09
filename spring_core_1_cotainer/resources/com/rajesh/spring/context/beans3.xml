@@ -81,4 +81,12 @@
 		</property>
 	</bean>
 	
+	<!--  compound property -->
+	
+	<bean id="customer5" class="com.rajesh.spring.core.ioc.Customer">
+		<property name="order" ref="order"></property>
+		<property name="order.item" value="pizza"></property>
+	</bean>
+	
+	
 </beans>

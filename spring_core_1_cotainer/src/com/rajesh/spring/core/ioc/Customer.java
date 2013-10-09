@@ -1,12 +1,13 @@
 package com.rajesh.spring.core.ioc;
 
+
 public class Customer {
 
 	private Order order;
-	
+
 	private String orderBeanName;
-	
-	public Customer(){
+
+	public Customer() {
 		System.out.println(" ## customer consturctor ");
 	}
 
@@ -15,7 +16,7 @@ public class Customer {
 	}
 
 	public void setOrder(Order order) {
-		System.out.println("   in set order method of customer ");
+	 
 		this.order = order;
 	}
 
@@ -26,6 +27,5 @@ public class Customer {
 	public void setOrderBeanName(String orderBeanName) {
 		this.orderBeanName = orderBeanName;
 	}
-	
-	 
+
 }

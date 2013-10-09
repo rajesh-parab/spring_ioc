@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="foodItem1" class="com.rajesh.spring.core.collections.FoodItem" />
+	<bean id="foodItem2" class="com.rajesh.spring.core.collections.FoodItem" />
+
+	<util:list id="namelist">
+		<value>item1</value>
+		<value>item2</value>
+	</util:list>
+
+	<util:list id="foods">
+		<ref bean="foodItem1" />
+		<ref bean="foodItem2" />
+	</util:list>
+
+	<util:properties id="emails">
+		<prop key="administrator">administrator@example.org</prop>
+		<prop key="support">support@example.org</prop>
+		<prop key="development">development@example.org</prop>
+	</util:properties>
+
+	<util:map id="stringmaps" key-type="java.lang.String"
+		value-type="java.lang.String">
+		<entry key="one" value="i am one" />
+		<entry key="two" value="i am two" />
+	</util:map>
+
+	<bean id="collectionHolder" class="com.rajesh.spring.core.collections.CollectionHolder">
+
+		<!-- list -->
+		<property name="names" ref="namelist" />
+
+		<property name="foodItems" ref="foods" />
+
+		<property name="emails" ref="emails" />
+
+		<property name="stringMaps" ref="stringmaps" />
+
+		<property name="foodMaps">
+			<util:map>
+				<entry key="one" value-ref="foodItem1" />
+				<entry key="two" value-ref="foodItem2" />
+			</util:map>
+		</property>
+
+		<property name="mixSet">
+			<set>
+				<value>just some string</value>
+				<ref bean="foodItem1" />
+			</set>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
