@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="dvd" class="com.rajesh.spring.core.ioc.Dvd"></bean>
+
+	<bean id="dvdPlayer" class="com.rajesh.spring.core.ioc.DVDPlayer">
+		<constructor-arg ref="dvd"></constructor-arg>
+	</bean>
+
+	<bean id="car" class="com.rajesh.spring.core.instantiation.Car">
+
+	</bean>
+	<bean id="bus" class="com.rajesh.spring.core.instantiation.Bus">
+
+	</bean>
+
+	<bean id="transport" class="com.rajesh.spring.core.ioc.Transport">
+		<constructor-arg ref="car"></constructor-arg>
+		<constructor-arg ref="bus"></constructor-arg>
+	</bean>
+
+	<bean id="exampleBean" class="com.rajesh.spring.core.ioc.ExampleBean">
+		<constructor-arg type="int" value="7500000" />
+		<constructor-arg type="java.lang.String" value="42" />
+	</bean>
+
+	<bean id="exampleBean2" class="com.rajesh.spring.core.ioc.ExampleBean">
+		<constructor-arg index="0" value="7500000" />
+		<constructor-arg index="1" value="42" />
+	</bean>
+
+	<bean id="exampleBean3" class="com.rajesh.spring.core.ioc.ExampleBean">
+		<constructor-arg name="x" value="7500000" />
+		<constructor-arg name="y" value="42" />
+	</bean>
+	
+	
+	<bean id="order" class="com.rajesh.spring.core.ioc.Order"></bean>
+	
+	<bean id="customer" class="com.rajesh.spring.core.ioc.Customer">
+		<property name="order" ref="order"></property>
+	</bean>
+	
+
+	<bean id="egg" class="com.rajesh.spring.core.ioc.Egg">
+	   	<property name="chicken" ref="chicken"></property>  
+	</bean>
+	
+	<bean id="chicken" class="com.rajesh.spring.core.ioc.Chicken">
+		<property name="egg" ref="egg"></property>
+	</bean>
+	
+ <!-- <bean id="customer2" class="com.rajesh.spring.core.ioc.Customer">
+		 <property name="order" value="order"></property>
+	</bean> -->
+	   
+	  <bean id="customer2" class="com.rajesh.spring.core.ioc.Customer">
+		 <property name="orderBeanName"><idref local="order"/>  </property>
+	</bean>  
+	
+  <bean id="customer3" class="com.rajesh.spring.core.ioc.Customer">
+		 <property name="orderBeanName" value="order1"></property>
+	</bean>  
+	   
+	<!--  inner bean -->
+	
+	<bean id="customer4" class="com.rajesh.spring.core.ioc.Customer">
+		<property name="order">
+			<bean class="com.rajesh.spring.core.ioc.Order">
+				<property name="item" value="books"></property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

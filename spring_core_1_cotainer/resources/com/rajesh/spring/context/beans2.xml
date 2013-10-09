@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+
+	<bean id="engine" class="com.rajesh.spring.core.instantiation.Car$Engine">
+
+	</bean>
+
+	<bean id="clientService" class="com.rajesh.spring.core.instantiation.ClientService"
+		factory-method="createInstance" />
+
+<bean id="carFactory" class="com.rajesh.spring.core.instantiation.CarFactory">
+
+	</bean>
+
+    <bean id="car" factory-method="createCar" factory-bean="carFactory"></bean>
+    
+    
+    
+    <bean id="vehicleFactory" class="com.rajesh.spring.core.instantiation.VehicleFactory">
+
+	</bean>
+
+ 	<bean id="bus" factory-method="createBus" factory-bean="vehicleFactory"></bean>
+ 
+	<bean id="truck" factory-method="createTruck" factory-bean="vehicleFactory"></bean>
+
+</beans>
