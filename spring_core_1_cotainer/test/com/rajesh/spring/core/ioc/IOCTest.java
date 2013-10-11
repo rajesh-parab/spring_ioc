@@ -143,5 +143,12 @@ public class IOCTest extends AbstractJUnit4SpringContextTests {
 		assertEquals("pizza",customer5.getOrder().getItem());
 	}
 	
+	@Test
+	public void testLasyInititialize(){
+	/*	LazyBean lazyBean = applicationContext.getBean("lazyBean",
+				LazyBean.class);*/
+		//assertNotNull(lazyBean);
+	}
+	
 
 }

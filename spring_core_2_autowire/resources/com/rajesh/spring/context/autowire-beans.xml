@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+ 
+  
+
+	<bean id="customer" class="com.rajesh.spring.autowire.Customer" autowire="byType">
+	 
+	</bean>
+ 
+<bean id="item" class="com.rajesh.spring.autowire.Item">
+	 
+	</bean>
+	
+	<!--  does not make difference autowire candiate true or false as long as autwire by name  -->
+	<!--  try both autowire ture and then set one primary -->
+	<bean name="order" class="com.rajesh.spring.autowire.Order" autowire-candidate="false">
+	 
+	</bean>
+	<bean name="order2" class="com.rajesh.spring.autowire.Order" autowire-candidate="true">
+	 
+	</bean>
+	
+	<bean name="goldOrder" class="com.rajesh.spring.autowire.Order" autowire-candidate="false">
+	 
+	</bean>
+	 
+<bean id="shoppingCart" class="com.rajesh.spring.autowire.ShoppingCart">
+	 
+	</bean>
+	
+	<bean id="bagCart" class="com.rajesh.spring.autowire.BagCart">
+	 
+	</bean>
+	
+<bean id="goldCustomer" class="com.rajesh.spring.autowire.GoldCustomer" autowire="byName">
+	 
+	</bean>
+	
+	
+
+</beans>

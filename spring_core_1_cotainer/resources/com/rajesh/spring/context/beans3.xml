@@ -88,5 +88,7 @@
 		<property name="order.item" value="pizza"></property>
 	</bean>
 	
-	
+	<bean id="lazyBean" class="com.rajesh.spring.core.ioc.LazyBean" lazy-init="true">
+		 
+	</bean>
 </beans>
