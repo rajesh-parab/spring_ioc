@@ -4,10 +4,10 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.InitializingBean;
 
-public class Entity implements InitializingBean {
+public class Entity implements InitializingBean  {
 
 	private String name;
-	
+ 
 	@PostConstruct
 	public void postinit(){
 		System.out.println(" post init");
@@ -37,4 +37,6 @@ public class Entity implements InitializingBean {
 	 
 		System.out.println("  after properties set ");
 	}
+
+	
 }
