@@ -85,4 +85,14 @@ public class ConfigTest {
 		System.out.println(car.getName()); 
 
 	}
+	@Test
+	public void testAutowired() {
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(
+				AppContext3.class);
+
+		CustomerService customerService = ctx.getBean("customerService", CustomerService.class);
+		assertNotNull(customerService);
+		assertNotNull(customerService.getCustomerDao()); 
+
+	}
 }
